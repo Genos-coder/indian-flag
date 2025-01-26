@@ -13,3 +13,13 @@ setInterval(() => {
   angle = (angle + 1) % 360;
   chakra.style.transform = `rotate(${angle}deg)`;
 }, 50);
+const audio = new Audio("jagga-jiteya.mp3");
+
+document.addEventListener("DOMContentLoaded", () => {
+  audio.play();
+});
+
+audio.addEventListener("ended", () => {
+  audio.currentTime = 0;
+  audio.play();
+});
