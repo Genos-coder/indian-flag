@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realistic Indian Flag</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            font-family: Arial, sans-serif;
+        }
+
+        .flag-container {
+            position: relative;
+            width: 300px;
+            height: 180px;
+            border: 2px solid #000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pole {
+            position: absolute;
+            left: -20px;
+            width: 20px;
+            height: 400px;
+            background: #8B4513;
+            border: 2px solid #5A3310;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .stripe {
+            width: 100%;
+            height: 33.33%;
+        }
+
+        .saffron {
+            background: #FF9933;
+        }
+
+        .white {
+            background: #FFFFFF;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .green {
+            background: #138808;
+        }
+
+        .chakra {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #000080;
+            border-radius: 50%;
+            background: radial-gradient(circle, #000080 20%, transparent 21%);
+            position: relative;
+        }
+
+        .chakra-spokes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 46px;
+            height: 46px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chakra-spokes div {
+            position: absolute;
+            width: 2px;
+            height: 22px;
+            background: #000080;
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flag-container">
+        <div class="pole"></div>
+        <div class="stripe saffron"></div>
+        <div class="stripe white">
+            <div class="chakra">
+                <div class="chakra-spokes"></div>
+            </div>
+        </div>
+        <div class="stripe green"></div>
+    </div>
+
+    <script>
+        const chakraSpokes = document.querySelector('.chakra-spokes');
+        for (let i = 0; i < 24; i++) {
+            const spoke = document.createElement('div');
+            spoke.style.width = "40px";
+            spoke.style.height = "2px"
+            spoke.style.transform = `rotate(${i * 15}deg)`;
+            chakraSpokes.appendChild(spoke);
+        }
+
+        const chakra = document.querySelector('.chakra');
+        let angle = 0;
+        setInterval(() => {
+            angle = (angle + 1) % 360;
+            chakra.style.transform = `rotate(${angle}deg)`;
+        }, 50);
+    </script>
+</body>
+
+</html>
